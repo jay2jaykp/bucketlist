@@ -24,7 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const swagger = __importStar(require("swagger-ui-express"));
-const swaggerDocs = __importStar(require("./swagger.json"));
+const swaggerDocs = __importStar(require("../swagger.json"));
 const app = express_1.default();
 const PORT = 5555;
 app.get('/', (req, res) => res.send('Surver is responding back from /'));
