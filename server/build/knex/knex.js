@@ -22,14 +22,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const swagger = __importStar(require("swagger-ui-express"));
-const swaggerDocs = __importStar(require("../swagger.json"));
-const app = express_1.default();
-const PORT = 5555;
-app.get('/', (req, res) => res.send('Surver is responding back from /'));
-app.use('/api-docs', swagger.serve, swagger.setup(swaggerDocs));
-app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
-});
-//# sourceMappingURL=index.js.map
+exports.knex = void 0;
+const knex_1 = __importDefault(require("knex"));
+const config = __importStar(require("./knexConfig"));
+require("ts-node");
+exports.knex = knex_1.default(config);
+//# sourceMappingURL=knex.js.map
