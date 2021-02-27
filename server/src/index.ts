@@ -1,14 +1,27 @@
-import express from 'express'
-import * as swagger from 'swagger-ui-express'
-import * as swaggerDocs from './swagger.json';
+import express from "express";
+import { Bucketlist } from "./api/index";
+import { knex } from "./knex/knex";
 
-const app = express()
+const app = express();
 const PORT = 5555;
 
-app.get('/', (req, res) => res.send('Surver is responding back from /'))
+// middleware
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.json());
 
-app.use('/api-docs', swagger.serve, swagger.setup(swaggerDocs))
+// api endpoints
+app.use("/v1", Bucketlist);
+
+console.log("Migration Initiated");
+knex.migrate
+  .latest()
+  .then(() => console.log("Migration Successful"))
+  .catch((err) => console.error("Error in Migration", err));
 
 app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
-})
+  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+});

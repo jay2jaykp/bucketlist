@@ -1,0 +1,50 @@
+openapi: '3.0.2'
+info:
+  title: BucketList API
+  version: '1.0'
+  description: APIs for the BucketList Web Application
+servers:
+  - url: http://localhost:{port}/{basepath}
+    description: The Dev Server
+    variables:
+      port:
+        default: '5555'
+      basepath:
+        default: v1
+
+paths:
+  /bucket-list:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            Application/json:
+              schema:
+                type: array
+                items: {
+                  $ref: '#/components/schemas/wish'
+                }
+
+components:
+  schemas:
+    wish:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 23
+        title:
+          type: string
+          example: Go to Paris
+        description:
+          type: string
+          example: I would like to go to Paris some day and see the beautiful Effil Tower,
+        by: 
+          type: integer
+          example: 2026
+        place: 
+          type: string
+          example: Paris, France
+                
