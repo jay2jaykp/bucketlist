@@ -25,5 +25,6 @@ export const postWish = async (
 ): Promise<void> => {
   logRequest(req, apiName);
   console.log(req.body);
-  res.sendStatus(200);
+  const data = await knex("wishes").insert(req.body);
+  res.sendStatus(201);
 };

@@ -25,7 +25,8 @@ exports.getWishes = getWishes;
 const postWish = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     logRequest(req, apiName);
     console.log(req.body);
-    res.sendStatus(200);
+    const data = yield knex_1.knex("wishes").insert(req.body);
+    res.sendStatus(201);
 });
 exports.postWish = postWish;
 //# sourceMappingURL=buketlist.controller.js.map
