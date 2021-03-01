@@ -1,6 +1,7 @@
 import Navigation from "./Navigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import List from "./List";
+import Page404 from "./Page404";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
             <List />
           </Route>
           <Route path="*">
-            <h1>Page not found</h1>
+            <Page404 />
           </Route>
         </Switch>
       </Router>
